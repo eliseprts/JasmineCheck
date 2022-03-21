@@ -1,89 +1,128 @@
+
 let selectElementsStartingWithA = (array) => {
-    return 'Write your method here';
+    const startsWithA = array.filter(elem => elem.startsWith('a'))
+    return startsWithA
 }
 
 let selectElementsStartingWithVowel = (array) => {
-    return 'Write your method here';
+    return array.filter(elem => /^[aeiou]/i.test(elem))
 }
 
 let removeNullElements = (array) => {
-    return 'Write your method here';
+    return array.filter(elem => { return elem !== null })
 }
 
 let removeNullAndFalseElements = (array) => {
-    return 'Write your method here';
+    return array.filter(elem => { return elem !== null && elem !== false })
 }
 
 let reverseWordsInArray = (array) => {
-    return 'Write your method here';
+    const newArr = []
+    function reverse() {
+        for (let elem of array) {
+            const newElem = elem.split('').reverse().join('')
+            newArr.push(newElem)
+        }
+    }
+    reverse()
+    return newArr;
 }
 
 let everyPossiblePair = (array) => {
-    return 'Write your method here';
 }
 
 let allElementsExceptFirstThree = (array) => {
-    return 'Write your method here';
+    const newArr = array.slice(3)
+    return newArr
 }
 
 let addElementToBeginning = (array, element) => {
-    return 'Write your method here';
+    array.unshift(element)
+    return array
 }
 
 let sortByLastLetter = (array) => {
-    return 'Write your method here';
+    return array.sort((a, b) => a.charCodeAt(a.length - 1) - b.charCodeAt(b.length - 1))
 }
 
 let getFirstHalf = (string) => {
-    return 'Write your method here';
+    let x
+    if (string.length % 2 == 0) {
+        x = (string.length / 2)
+    } else {
+        x = (string.length / 2) + 1
+    }
+    return string.substring(0, x)
 }
 
 let makeNegative = (number) => {
-    return 'Write your method here';
+    if (number > 0) {
+        return -number
+    } else {
+        return number
+    }
 }
 
 let numberOfPalindromes = (array) => {
-    return 'Write your method here';
+    const newArr = []
+    for (let elem of array) {
+        const elemReverse = elem.split('').reverse().join('')
+        if (elem === elemReverse) {
+            newArr.push(elem)
+        }
+    }
+    return newArr.length;
 }
 
 let shortestWord = (array) => {
-    return 'Write your method here';
+    return array.reduce((a, b) =>
+        a.length <= b.length ? a : b
+    )
 }
 
 let longestWord = (array) => {
-    return 'Write your method here';
+    return array.reduce((a, b) =>
+        a.length >= b.length ? a : b
+    )
 }
 
 let sumNumbers = (array) => {
-    return 'Write your method here';
+    const x = 0
+    return array.reduce((a, b) => a + b, x
+    )
 }
 
 let repeatElements = (array) => {
-    return 'Write your method here';
+    const newArr = array
+    return array.concat(newArr);
 }
 
 let stringToNumber = (string) => {
-    return 'Write your method here';
+    return new Number(string)
 }
 
 let calculateAverage = (array) => {
-    return 'Write your method here';
+    const x = 0
+    const sum = array.reduce((a, b) => a + b, x)
+    return sum / array.length
 }
 
 let getElementsUntilGreaterThanFive = (array) => {
-    return 'Write your method here';
+    return;
 }
 
 let convertArrayToObject = (array) => {
-    return 'Write your method here';
+    return
 }
 
 let getAllLetters = (array) => {
-    return 'Write your method here';
+    const newArr = array.join('').split('')
+    return [...new Set(newArr)].sort()
 }
 
 let swapKeysAndValues = (object) => {
-    return 'Write your method here';
+    const swap = object => Object.fromEntries(Object.entries(object).map(a => a.reverse()))
+    return swap(object)
 }
 
 let sumKeysAndValues = (object) => {
