@@ -18,17 +18,15 @@ let removeNullAndFalseElements = (array) => {
 
 let reverseWordsInArray = (array) => {
     const newArr = []
-    function reverse() {
-        for (let elem of array) {
-            const newElem = elem.split('').reverse().join('')
-            newArr.push(newElem)
-        }
+    for (let elem of array) {
+        const newElem = elem.split('').reverse().join('')
+        newArr.push(newElem)
     }
-    reverse()
     return newArr;
 }
 
 let everyPossiblePair = (array) => {
+    return array.sort().map((v, i) => array.slice(i + 1).map(w => [v, w])).flat()
 }
 
 let allElementsExceptFirstThree = (array) => {
@@ -108,11 +106,23 @@ let calculateAverage = (array) => {
 }
 
 let getElementsUntilGreaterThanFive = (array) => {
-    return;
+    const newArr = []
+    for (let elem of array) {
+        if (elem > 5) {
+            break
+        } else {
+            newArr.push(elem)
+        }
+    }
+    return newArr
 }
 
 let convertArrayToObject = (array) => {
-    return
+    const object = {}
+    for (let i = 0; i < array.length - 1; i += 2) {
+        object[array[i]] = array[i + 1]
+    }
+    return object
 }
 
 let getAllLetters = (array) => {
@@ -121,54 +131,100 @@ let getAllLetters = (array) => {
 }
 
 let swapKeysAndValues = (object) => {
-    const swap = object => Object.fromEntries(Object.entries(object).map(a => a.reverse()))
-    return swap(object)
+    return Object.fromEntries(Object.entries(object).map(a => a.reverse()))
 }
 
 let sumKeysAndValues = (object) => {
-    return 'Write your method here';
+    const sumValues = object => Object.values(object).reduce((a, b) => a + b)
+    const sumKeys = object => Object.keys(object).reduce((a, b) => Number(a) + Number(b))
+    return Number(sumValues(object)) + Number(sumKeys(object))
 }
 
 let removeCapitals = (string) => {
-    return 'Write your method here';
+    const arr = string.split(' ')
+    const newArr = []
+    for (let elem of arr) {
+        const newElem = elem.substring(1)
+        newArr.push(newElem)
+    }
+    return newArr.join(' ')
 }
 
 let roundUp = (number) => {
-    return 'Write your method here';
+    return Math.round(number) + 1
 }
 
 let formatDateNicely = (date) => {
-    return 'Write your method here';
+    return date.toLocaleDateString()
 }
 
 let getDomainName = (string) => {
-    return 'Write your method here';
+    const newString = string.split('@').pop()
+    return newString.substring(0, newString.length - 4)
 }
 
 let titleize = (string) => {
-    return 'Write your method here';
+    const words = string.split(" ")
+    const exceptions = ['and', 'the']
+    for (let i = 0; i < words.length; i++) {
+        if (i > 0 && exceptions.includes(words[i]))
+            continue
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].substring(1)
+    }
+    let newString = words.join(' ')
+    newString = newString.replace('. a', '. A')
+    return newString;
 }
 
 let checkForSpecialCharacters = (string) => {
-    return 'Write your method here';
+    const specialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
+    if (specialChar.test(string)) {
+        return true
+    } else {
+        return false
+    }
 }
 
 let squareRoot = (number) => {
-    return 'Write your method here';
+    return Math.sqrt(number)
 }
 
 let factorial = (number) => {
-    return 'Write your method here';
+    let product = 1
+    for (let i = 1; i <= number; i += 1) {
+        product = product * i
+    }
+    return product
 }
 
 let findAnagrams = (string) => {
-    return 'Write your method here';
+    if (string.length < 2) {
+        return [string]
+    } else {
+        let anagrams = []
+        for (let i = 0; i < string.length; i++) {
+            let letter = string[i]
+            let shorterWord = string.substr(0, i) + string.substr(i + 1, string.length - 1)
+            let shortwordArr = findAnagrams(shorterWord)
+            for (let j = 0; j < shortwordArr.length; j++) {
+                anagrams.push(letter + shortwordArr[j])
+            }
+        }
+        return anagrams
+    }
 }
 
 let convertToCelsius = (number) => {
-    return 'Write your method here';
+    return Math.round((number - 32) * 5 / 9)
 }
 
 let letterPosition = (array) => {
-    return 'Write your method here';
+    let lttrPosition = []
+    for (let elem of array) {
+        let code = elem.toUpperCase().charCodeAt(elem)
+        if (code > 64 && code < 91)
+            lttrPosition.push(code - 64)
+    }
+    return lttrPosition
 }
+
